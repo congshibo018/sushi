@@ -1,91 +1,18 @@
 <!DOCTYPE HTML>
 <html>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.7.min.js";;;></script>
 <head>
-<style type="text/css">
-*, body{
-  padding: 0;
-  margin: 0 auto;
-}
-header{
-  height: 646px;
-  background: url(images/img_00.jpg) no-repeat center;
-}
-section{
-  height: 880px;
-  background-color: #;
-  margin-top: 80px;
-  font-family: 'FangSong', 'STFangsong';
-  text-align: center;
-}
-section>h1{
-  font-size: 48px;
-  font-weight: normal;
-  color: #555555;
-}
-section>ul{
-  padding: 20px;
-  display: block;
-  width: 300px;
-}
-section>ul>li{
-  float:left;
-  padding: 4px;
-  list-style: none;
-  font-size: 24px;
-  color: #999999;
-}
-#itemsAndCart{
-  height: 680px;
-  width: 1366px;
-  background-color: #aaaaaa;
-  margin-top: 100px; 
-}
-#items{
-  float: left;
-  height: 480px;
-  width: 700px;
-  background-color: #666;
-  margin-top: 100px; 
-}
-#items>ul>li{
-  float: left;
-  display: block;
-  height: 120px;
-  width: 110px;
-  background-color: #ffffff; 
-  margin:30px 0 0 50px;
-}
-#cart{
-  float: right;
-  height: 480px;
-  width: 470px;
-  background-color: #666;
-  margin-top: 100px; 
-}
-footer{
-  height: 707px;
-  background: url(images/img_02.jpg) no-repeat center;
-  margin-top: 100px;
-}
-</style>
+	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.7.min.js";;;></script>
+	<script type="text/javascript" language="javascript" src="js.js"></script>
+	<link href="style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 <header></header>
 <section>
-
-  <img src="images/img_01.jpg" />
-  <h1>菜单</h1>
-  <img src="images/img_01.jpg" />
-  <ul id="all_series">
+	<img src="images/img_01.jpg" />
+	<h1>菜单</h1>
+	<img src="images/img_01.jpg" />
+	<ul id="all_series">
       <li style="color: #333" onclick="getSeries(this)" data-series="热食系列" id="hotfood-series">热<br>食<br>系<br>列</li>
       <li onclick="getSeries(this)" data-series="冷食系列">冷<br>食<br>系<br>列</a></li>
       <li onclick="getSeries(this)" data-series="刺身系列">刺<br>身<br>系<br>列</li>
@@ -96,124 +23,24 @@ footer{
       <li onclick="getSeries(this)" data-series="寿司卷">寿<br>司<br>卷</li>
       <li onclick="getSeries(this)" data-series="细卷">细<br>卷</li>
   </ul>
-  <div id="itemsAndCart">
-    <div id="items">
-      <ul class="thumbnails" id="dishes"><li class="col-md-3">                    <div class="thumbnail">                        <img alt="300x200" src="menu/1.jpg/&gt;                        &lt;div class=" caption'="">                            <h3>味增汤</h3>                            <p>                                2.0                            </p>                            <p>                                <a class="btn btn-primary" onclick="addToCart(this)" data-dishname="味增汤">添加</a>                            </p>                        </div>                             </li>    <li class="col-md-3">                    <div class="thumbnail">                        <img alt="300x200" src="menu/2.jpg/&gt;                        &lt;div class=" caption'="">                            <h3>章鱼小丸子</h3>                            <p>                                7.5                            </p>                            <p>                                <a class="btn btn-primary" onclick="addToCart(this)" data-dishname="章鱼小丸子">添加</a>                            </p>                        </div>                             </li>    <li class="col-md-3">                    <div class="thumbnail">                        <img alt="300x200" src="menu/3.jpg/&gt;                        &lt;div class=" caption'="">                            <h3>日式煎饺</h3>                            <p>                                7.5                            </p>                            <p>                                <a class="btn btn-primary" onclick="addToCart(this)" data-dishname="日式煎饺">添加</a>                            </p>                        </div>                             </li>    <li class="col-md-3">                    <div class="thumbnail">                        <img alt="300x200" src="menu/4.jpg/&gt;                        &lt;div class=" caption'="">                            <h3>豚骨拉面</h3>                            <p>                                15.0                            </p>                            <p>                                <a class="btn btn-primary" onclick="addToCart(this)" data-dishname="豚骨拉面">添加</a>                            </p>                        </div>                             </li>    <li class="col-md-3">                    <div class="thumbnail">                        <img alt="300x200" src="menu/5.jpg/&gt;                        &lt;div class=" caption'="">                            <h3>鳗鱼饭</h3>                            <p>                                28.0                            </p>                            <p>                                <a class="btn btn-primary" onclick="addToCart(this)" data-dishname="鳗鱼饭">添加</a>                            </p>                        </div>                             </li>    </ul>
-    </div>
-    <div id="cart">
-      <h1 style = "color:#eeeeee" onclick="getCart()">购物车</h1>
-      <h4 id = "cartList"></h4>
-      <h4 id = "total_price">total_price: 0</h4>
-      <a onclick="checkCart()">去支付</a><a onclick="clearCart()">清空购物车</a>
-    </div>
-  </div>
-<script> 
-  //获取当前类型，产生相应菜品列表
-    function getSeries(item){
-        var series = item.getAttribute("data-series");
-        var request=$.ajax({
-            url:'getDish.php?series='+series,
-            async:false
-        })
-        var jsonStr = request.responseText;
-        var test = eval("("+jsonStr+")");
-        var test2 = eval("("+test+")");
-        var dishesString = "";
-
-        for(var i in test2){
-            dishesString +="<li class='col-md-3'>                    <div class='thumbnail'>                        <img alt='300x200' src='menu/" + test2[i].Picture + "/>                        <div class='caption'>                            <h3>"+ test2[i].DishName+"</h3>                            <p>                                "+test2[i].Price+"                            </p>                            <p>                                <a class='btn btn-primary' onclick='addToCart(this)' data-dishName='"+ test2[i].DishName +"'>添加</a>                            </p>                        </div>                    </div>         </li>    ";
-        }
-        var dishesDiv = document.getElementById("dishes");
-        dishesDiv.innerHTML = dishesString;
-        var childs = document.getElementById("all_series").childNodes;
-        for (var i =0;i<childs.length;i++){
-          childs[i].style = "color:#999999";
-        }
-        item.style = "color: #333";
-    }
-    function getCart() {
-      var request=$.ajax({
-        url:'getCart.php',
-        async:false
-      })
-      var jsonStr = request.responseText;
-      var test = eval("("+jsonStr+")");
-      var cartString = "";
-
-      var total_price = "";
-      for(var i in test){
-        var num = test[i] + "";
-        num = num.replace(/[^0-9]/ig,"");
-        if (num != 0){
-          cartString += i+"<a data-dishName= "+i+" onclick='removeFromCart(this)'>-</a> "+ num + "<a data-dishName= "+i+" onclick='addToCart(this)'>+</a><br>";
-        }
-      }
-      var cartList = document.getElementById("cartList");
-      cartList.innerHTML = cartString;
-      
-    }
-
-    function addToCart(item){
-      var dishName = item.getAttribute("data-dishName");
-      var request = $.ajax({
-        url:'addDish.php?dishName='+dishName,
-        async:false
-      });
-      var total_price = request.responseText;
-      var t_price = document.getElementById("total_price");
-      t_price.innerHTML = "total_price: "+total_price;
-      getCart();
-    }
-
-    function removeFromCart(item){
-      var dishName = item.getAttribute("data-dishName");
-      var request = $.ajax({
-        url:'deleteDish.php?dishName='+dishName,
-        async:false
-      });
-      var total_price = request.responseText;
-      var t_price = document.getElementById("total_price");
-      t_price.innerHTML = "total_price: "+total_price;
-      getCart();
-    }
-
-    function clearCart(){
-      var request = $.ajax({
-        url:'clearCart.php',
-        async:false
-      });
-      var total_price = request.responseText;
-      var t_price = document.getElementById("total_price");
-      t_price.innerHTML = "total_price: "+total_price;
-      getCart();
-    }
-    
-    function checkCart(){
-      var cartList = document.getElementById("cartList");
-      var t_price = document.getElementById("total_price");
-      var message = "THIS IS YOUR CART:";
-
-      var request=$.ajax({
-        url:'getCart.php',
-        async:false
-      })
-      var jsonStr = request.responseText;
-      var test = eval("("+jsonStr+")");
-
-      var total_price = document.getElementById("total_price").innerHTML;
-      for(var i in test){
-        var num = test[i] + "";
-        num = num.replace(/[^0-9]/ig,"");
-        if (num != 0){
-          message += i+":"+ num + "份<br>";
-        }
-      }
-      message += "TOTAL PRICE:"+total_price;
-      alert(message);
-
-    }
-</script>  
-
+	<div id="itemsAndCart">
+		<div id="items">
+			<ul id="dishes"><li><div class="item"><img src="menu/1.jpg" style="width: 120px; height: 120px;"></div><span class="name">味增汤</span><br><span class="price">$2.0</span><button class="add" onclick="addToCart(this)" data-dishname="味增汤">Add</button></li><li><div class="item"><img src="menu/2.jpg" style="width: 120px; height: 120px;"></div><span class="name">章鱼小丸子</span><br><span class="price">$7.5</span><button class="add" onclick="addToCart(this)" data-dishname="章鱼小丸子">Add</button></li><li><div class="item"><img src="menu/3.jpg" style="width: 120px; height: 120px;"></div><span class="name">日式煎饺</span><br><span class="price">$7.5</span><button class="add" onclick="addToCart(this)" data-dishname="日式煎饺">Add</button></li><li><div class="item"><img src="menu/4.jpg" style="width: 120px; height: 120px;"></div><span class="name">豚骨拉面</span><br><span class="price">$15.0</span><button class="add" onclick="addToCart(this)" data-dishname="豚骨拉面">Add</button></li><li><div class="item"><img src="menu/5.jpg" style="width: 120px; height: 120px;"></div><span class="name">鳗鱼饭</span><br><span class="price">$28.0</span><button class="add" onclick="addToCart(this)" data-dishname="鳗鱼饭">Add</button></li></ul>
+			<div id="pageButton">
+				<button class="page selectedPage"></button>
+				<button class="page"></button>
+			</div>
+		</div>
+		<div id="cart">
+			<ul id="current_order">
+				<li id="cartTittle"><span>ORDER DETAILS<span></li>
+			</ul>
+			<hr>
+			<h4 id = "total_price">total_price: 0</h4>
+			<a onclick="clearCart()">清空购物车</a>
+			<button class="checkout">结算</button>
+		</div>
+	</div>
 </section>
 <footer></footer>
 </body>
