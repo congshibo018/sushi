@@ -2,7 +2,7 @@
 class Mailer
 {
   private $host;
-  private $port = 25;
+  private $port = 994;
   private $user;
   private $pass;
   private $debug = false;
@@ -72,14 +72,4 @@ class Mailer
   }
  
 }
-$port = 25;
-$user = 'alec_110'; //请替换成你自己的smtp用户名
-$pass = 'as6377658'; //请替换成你自己的smtp密码
-$host = 'smtp.163.com';
-$from = 'alec_110@163.com'; 
-$to = 'alec_110@163.com';
-$body = '请确认您的订单信息';
-$subjet = '和风寿司订单确认';
-$mailer = new Mailer($host,$port,$user,$pass,true);
-$mailer->sendMail($from,$to,$subjet,$body);
 ?>

@@ -2,8 +2,10 @@
     header('Content-Type: application/json');
     header('Content-Type: text/html;charset=utf-8');
 
-    $series = $_GET['series'];
+    session_start();
 
+    $series = $_GET['series'];
+    $page = ($_GET['page']-1)*12;
     $dish = [];
 
     $con = mysqli_connect("localhost:3306","root","123");
@@ -13,6 +15,7 @@
     mysqli_select_db($con,"HefengSushi");
     mysqli_query($con,'set names utf8');
     $query = "select * from Dish where Series = '".$series."'";
+    $query = $query." limit ".$page.",12";
     $result = mysqli_query($con,$query);
     $jsonResult = "[";
     while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
@@ -34,6 +37,9 @@
     $jsonResult = rtrim($jsonResult,",");
     $jsonResult .= "]";
     $final = urldecode(json_encode($jsonResult));
+
+    
+
     echo $final;
 ?>
 

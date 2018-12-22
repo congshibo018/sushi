@@ -19,14 +19,10 @@ a.execute('set names utf8')
 
 f = open('menu.txt')
 for i in f:
-  t = i.split()
-  if(os.path.exists(t[0]+".jpg")):
-    sql='''insert into Dish(id,DishName,Picture,Price,Series) values({0},{1},{2},{3},{4});'''.format("'"+t[0]+"'","'"+t[1]+"'","'"+t[0]+".jpg'",float(t[2]),"'"+t[3]+"'")
-    print(sql)
-    a.execute(sql)
-  if(os.path.exists(t[0]+".png")):
-    sql='''insert into Dish(id,DishName,Picture,Price,Series) values({0},{1},{2},{3},{4});'''.format("'"+t[0]+"'","'"+t[1]+"'","'"+t[0]+".png'",float(t[2]),"'"+t[3]+"'")
-    print(sql)
-    a.execute(sql)
+  i = i.replace("\t","").replace("\n","")
+  t = i.split(",")
+  sql='''insert into Dish(id,DishName,Picture,Price,Series) values({0},{1},{2},{3},{4});'''.format("'"+t[0]+"'","'"+t[1]+"'","'"+t[0]+".png'",float(t[2]),"'"+t[3]+"'")
+  print(sql)
+  a.execute(sql)
 conn.commit()
 conn.close()

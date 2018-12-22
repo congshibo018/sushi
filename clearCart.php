@@ -8,7 +8,10 @@
     }
     mysqli_select_db($con,"HefengSushi");
     mysqli_query($con,'set names utf8');
-    if($_SESSION['cart']){
+    
+    if(empty($_SESSION['cart'])){
+        $_SESSION['total_price'] = 0;
+    }else{
         $my_array = array();
         $query = "select * from Dish";
         $result = mysqli_query($con,$query);

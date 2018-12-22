@@ -9,6 +9,16 @@
     }
     mysqli_select_db($con,"HefengSushi");
     mysqli_query($con,'set names utf8');
+    if(empty($_SESSION['cart'])){
+        $my_array = array();
+        $query = "select * from Dish";
+        $result = mysqli_query($con,$query);
+        while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+            $my_array[$row['DishName']] = 0; //数量
+        }
+        $_SESSION['total_price'] = 0;
+        $_SESSION['cart'] = $my_array;
+    }
     $query = "select * from Dish where DishName = '".$dishName."'";
     $result = mysqli_query($con,$query);
 

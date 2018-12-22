@@ -15,59 +15,52 @@
 	</script>
 </head>
 <body onload="clearCart()">
-<div id="pORd" class="show" style="display: none">
+<div id="pORd" class="hidden">
 	<img id="deliveryButton" src="images/delivery.png" onclick="chooseDelivery()" />
 	<span style="font-size: 18px; color: #999999">OR</span>
 	<img id="pickupButton" src="images/pickup.png" onclick="choosePickup()"/>
 	<p><span style="color: #f68cba;">*</span> Less than $35, $5 delivery fee will be required.</p>
 </div>
-
-<div id="payForm" class="form hidden" style="display: none">
+<div id="payForm" class="form hidden">
 	<input type="hidden" id="deliveryFee" value="0">
 	<p class="formTittle">DELIVERY DETAIL</p>
-	
 	<hr style="width: 80%; opacity: 0.3;">
 	<p class="formItem">NAME:</p><input type="text" id="custom_name" ／>
 	<p class="formItem">ADDRESS:</p><input type="text" id="custom_address" ／>
 	<p class="formItem">PHONE:</p><input type="tel" id="custom_phone" ／>
 	<p class="formItem" style="text-indent: 0">TIME:</p><input type="time" id="custom_time" ／>
 	<input type="hidden" id="pay_method">
-	
-	<form style="display: none" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" onclick="return submitOrder();">
-		<input type="hidden" name="cmd" value="_xclick">
-		<input type="hidden" name="business" value="Xiaopeng19940214@gmail.com">
-		<input type="hidden" name="hosted_button_id" value="ZNAJUMMRRXQXC">
-		<input id = "paypalAmount" type="hidden" name="amount" value="1.00">
-		<input type="hidden" name="currency_code" value="AUD">
-		<input id = "paypalcustom" type="hidden" name="custom" value="">
-		<input type="hidden" name="notify_url" value="https://47.91.42.166/ipn.php">
-	</form>
-	<div style="margin-left: 50px; margin-top: 30px; width:100px; float: left">
-		<img src="images/pay.svg" onclick="trylast()">
-	</div>
-	<div style="margin-right: 180px; margin-top: 0px; width:10px; float: right;">
-		<span class="cancel" onclick="cancelOrder()">BACK</span>
-	</div>
-	
+	<button class="buy" onclick="submitOrder()" >PAY</button>
+	<span class="cancel" onclick="cancelOrder()">CANCEL</span>
+	<form id="PayPalForm" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="display: none">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="business" value="alec_110@163.com">
+<input id = "paypalAmount" type="hidden" name="amount" value="1.00">
+<input type="hidden" name="currency_code" value="AUD">
+<input id = "paypalcustom" type="hidden" name="custom" value="">
+<input type="hidden" name="notify_url" value="http://120.79.91.30/ipn.php">  
+<input type="image" src="https://www.paypalobjects.com/en_AU/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_AU/i/scr/pixel.gif" width="1" height="1">
+</form>
 </div>
 <header></header>
 <section>
 	<img src="images/menu.jpg" />
 	<ul id="all_series">
-      <li style="color: #fefefe; background-color: #f68cba;" onclick="getSeries(this)" data-series="HOT FOOD SERIES" id="hotfood-series">HOT FOOD SERIES</li>
-      <li onclick="getSeries(this)" data-series="COLD SERIES">COLD SERIES</li>
-      <li onclick="getSeries(this)" data-series="SASHIMI SERIES">SASHIMI SERIES</li>
-      <li onclick="getSeries(this)" data-series="SET MEAL">SET MEAL</li>
-      <li onclick="getSeries(this)" data-series="SEAFOOD PEONY MOCHI ">SEAFOOD PEONY MOCHI </li>
-      <li onclick="getSeries(this)" data-series="COOKED FOOD PEONY MOCHI ">COOKED FOOD PEONY MOCHI </li>
-      <li onclick="getSeries(this)" data-series="SUSHI WARSHIP BUN">SUSHI WARSHIP BUN</li>
-      <li onclick="getSeries(this)" data-series="SUSHI ROLL">SUSHI ROLL</li>
-      <li onclick="getSeries(this)" data-series="THIN ROLL">THIN ROLL</li>
+      <li style="color: #fefefe; background-color: #f68cba;" onclick="getSeries(this)" data-series="热食系列" id="hotfood-series">热食系列</li>
+      <li onclick="getSeries(this)" data-series="冷食系列">冷食系列</li>
+      <li onclick="getSeries(this)" data-series="刺身系列">刺身系列</li>
+      <li onclick="getSeries(this)" data-series="套餐系列">套餐系列</li>
+      <li onclick="getSeries(this)" data-series="生鲜手握">生鲜手握</li>
+      <li onclick="getSeries(this)" data-series="熟食手握">熟食手握</li>
+      <li onclick="getSeries(this)" data-series="寿司军舰">寿司军舰</li>
+      <li onclick="getSeries(this)" data-series="寿司卷">寿司卷</li>
+      <li onclick="getSeries(this)" data-series="细卷">细卷</li>
   </ul>
 	<div id="itemsAndCart">
 		<div id="items">
-			<ul id="dishes"><li><div class="item"><img src="menu/1.png" style="width: 120px; height: 120px;"></div><span class="name" title="Miso soup">Miso soup</span><br><span class="price">$2.0</span><button class="add" onclick="addToCart(this)" data-dishname="Miso soup">Add</button></li><li><div class="item"><img src="menu/2.png" style="width: 120px; height: 120px;"></div><span class="name" title="Takoyaki octopus">Takoyaki octopus</span><br><span class="price">$7.5</span><button class="add" onclick="addToCart(this)" data-dishname="Takoyaki octopus">Add</button></li><li><div class="item"><img src="menu/3.png" style="width: 120px; height: 120px;"></div><span class="name" title="Japanese fried dumplings">Japanese fried dumplings</span><br><span class="price">$7.5</span><button class="add" onclick="addToCart(this)" data-dishname="Japanese fried dumplings">Add</button></li><li><div class="item"><img src="menu/4.png" style="width: 120px; height: 120px;"></div><span class="name" title="Dolphin">Dolphin</span><br><span class="price">$15.0</span><button class="add" onclick="addToCart(this)" data-dishname="Dolphin">Add</button></li><li><div class="item"><img src="menu/5.png" style="width: 120px; height: 120px;"></div><span class="name" title="Eel rice">Eel rice</span><br><span class="price">$28.0</span><button class="add" onclick="addToCart(this)" data-dishname="Eel rice">Add</button></li></ul>
-			<div id="pageButton"><button class="page selectedPage" onclick="changePage('HOT FOOD SERIES',1)"></button></div>
+			<ul id="dishes"><li><div class="item"><img src="menu/1.jpg" style="width: 120px; height: 120px;"></div><span class="name">味增汤</span><br><span class="price">$2.0</span><button class="add" onclick="addToCart(this)" data-dishname="味增汤">Add</button></li><li><div class="item"><img src="menu/2.jpg" style="width: 120px; height: 120px;"></div><span class="name">章鱼小丸子</span><br><span class="price">$7.5</span><button class="add" onclick="addToCart(this)" data-dishname="章鱼小丸子">Add</button></li><li><div class="item"><img src="menu/3.jpg" style="width: 120px; height: 120px;"></div><span class="name">日式煎饺</span><br><span class="price">$7.5</span><button class="add" onclick="addToCart(this)" data-dishname="日式煎饺">Add</button></li><li><div class="item"><img src="menu/4.jpg" style="width: 120px; height: 120px;"></div><span class="name">豚骨拉面</span><br><span class="price">$15.0</span><button class="add" onclick="addToCart(this)" data-dishname="豚骨拉面">Add</button></li><li><div class="item"><img src="menu/5.jpg" style="width: 120px; height: 120px;"></div><span class="name">鳗鱼饭</span><br><span class="price">$28.0</span><button class="add" onclick="addToCart(this)" data-dishname="鳗鱼饭">Add</button></li></ul>
+			<div id="pageButton"><button class="page selectedPage" onclick="changePage('热食系列',1)"></button></div>
 		</div>
 		<div id="cart" >
 			<ul id="current_order">
@@ -80,18 +73,19 @@
 	</div>
 </section>
 <div id="introduction">
-	<div id="introductionTittle" >
+	<div id="introductionTittle">
 		<img class="floatLeft tittleImg" src="images/line.jpg" />
-		<p class="floatLeft" style="font-size: 30px; color: #666666">Each sushi is beautiful and charming
-		<img class="floatRight tittleImg" src="images/line.jpg" />
+		<p class="floatLeft" style="font-size: 36px; color: #666666">每一份寿司都美的令人心动<br>
+		<span style="font-size: 24px; color: #f68cba;">你所见，都是我们将心注入</span></p>
+		<img class="floatLeft tittleImg"  src="images/line.jpg" />
 	</div>
 	<img class="introductionBG" src="images/introduction.jpg" />
 </div>
 <footer>
 	<div id="footerTittle">
 		<img class="floatLeft tittleImg" src="images/line.jpg" />
-		<p class="floatLeft" style="font-size: 30px; color: #666666">Contact Us</p>
-		<img class="floatRight tittleImg"  src="images/line.jpg" />
+		<p class="floatLeft" style="font-size: 36px; color: #666666">联系我们</p>
+		<img class="floatLeft tittleImg"  src="images/line.jpg" />
 	</div>
 	<div id="footerContent">
 		<div class="floatLeft" id="footerContentImg"></div>
@@ -102,75 +96,15 @@
 	</div>
 	<div id="copyright">
 		<img src="images/line2.jpg" />
-		<p>© HefengSushi Enterprises Ltd 2018</p>
+		<p>版权所有 © 2017 河风寿司保留一切权利。</p>
 	</div>
 </footer>
 </body>
 <script type="text/javascript">
-	onload = function(){
-		$(".name").onmouseover = function(){
-			this.title = this.innerHTML;
-		}
-	}
-    
-    function trylast(){
-    	var temp = document.createElement("form");
-    	temp.action = "https://www.paypal.com/cgi-bin/webscr";
-    	temp.method = "post";
-    	temp.style.display = "none";
-    	temp.id = "PayPalForm";
-    	var input1 = document.createElement("input");
-    	var input2 = document.createElement("input");
-    	var input3 = document.createElement("input");
-    	var input4 = document.createElement("input");
-    	var input5 = document.createElement("input");
-    	var input6 = document.createElement("input");
-    	var input7 = document.createElement("input");
-
-    	input1.type = "hidden";
-    	input1.name = "cmd";
-    	input1.value = "_xclick";
-
-    	input2.type = "hidden";
-    	input2.name = "business";
-    	input2.value = "Xiaopeng19940214@gmail.com";
-
-    	input3.type = "hidden";
-    	input3.name = "currency_code";
-    	input3.value = "AUD";
-
-    	input4.type = "hidden";
-    	input4.name = "amount";
-    	input4.value = document.getElementById("paypalAmount").value;
-
-    	input5.type = "hidden";
-    	input5.name = "notify_url";
-    	input5.value = "https://47.91.42.166/ipn.php";
-
-    	input6.type = "hidden";
-    	input6.name = "custom";
-    	input6.value = "";
-    	input6.id = "paypalcustom";
-
-    	temp.appendChild(input1);
-    	temp.appendChild(input2);
-    	temp.appendChild(input3);
-    	temp.appendChild(input4);
-    	temp.appendChild(input5);
-    	temp.appendChild(input6);
-    	
-    	document.body.appendChild(temp);
-    	if(submitOrder){
-    		temp.submit();
-    		return temp;
-    	}
-    	
-    }
 	function checkout(){
 		getTotalPrice();
 		if(checkCart()==true){
 			$("#pORd").removeClass("hidden").addClass("show");
-			document.getElementById("pORd").style.display = "";
 		}
 	}
 	function chooseDelivery(){
@@ -178,9 +112,7 @@
 		document.getElementById("custom_address").value = "";
 		document.getElementById("pay_method").value = "delivery";
 		$("#pORd").removeClass("show").addClass("hidden");
-		document.getElementById("pORd").style.display = "none";
 		$("#payForm").removeClass("hidden").addClass("show");
-		document.getElementById("payForm").style.display = "";
 
 	}
 	function choosePickup(){
@@ -188,14 +120,10 @@
 		document.getElementById("custom_address").value = "202 Alison Road, Randwick";
 		document.getElementById("pay_method").value = "pick_up";
 		$("#pORd").removeClass("show").addClass("hidden");
-		document.getElementById("pORd").style.display = "none";
 		$("#payForm").removeClass("hidden").addClass("show");
-		document.getElementById("payForm").style.display = "";
 	}
 	function cancelOrder(){
 		$(".form").removeClass("show").addClass("hidden");
-		document.getElementById("pORd").style.display = "none";
-		document.getElementById("payForm").style.display = "none";
 	}
 	function checkDeliveryFee(){
 		var request=$.ajax({
@@ -253,7 +181,6 @@
         alert("Your order has been placed!");}
         else{
         	alert('Please complete your information');
-        	return false;
         }
     }
       // This example displays an address form, using the autocomplete feature
@@ -283,9 +210,9 @@
         var distanceMeter = google.maps.geometry.spherical.computeDistanceBetween(LatLng1, LatLng2);
         if(distanceMeter>5000){
         	alert("sorry too far away...");
-          	document.getElementById("PayPalForm").disabled = true;
+          	document.getElementById("submitButton").disabled = true;
           }else{
-          	document.getElementById("PayPalForm").disabled = false;
+          	document.getElementById("submitButton").disabled = false;
           }
       }
     </script>

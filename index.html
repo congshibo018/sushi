@@ -1,169 +1,46 @@
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!DOCTYPE HTML>
+<html>
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.7.min.js";;;></script>
-<div class="container-fluid">
-    <div class="row-fluid">
-        <div class="col-md-12">
-            <h3>
-                h3. 这是gtmd和风寿司.
-            </h3>
-            <div class="row-fluid">
-                <div class="col-md-8">
-                    <ul class="nav nav-tabs">
-                        <li class="active">
-                            <a href="#" onclick="getSeries(this)">热食系列</a>
-                        </li>
-                        <li>
-                            <a href="#" onclick="getSeries(this)">冷食系列</a>
-                        </li>
-                        <li>
-                            <a href="#" onclick="getSeries(this)">刺身系列</a>
-                        </li>
-                        <li>
-                            <a href="#" onclick="getSeries(this)">套餐系列</a>
-                        </li>
-                        <li>
-                            <a href="#" onclick="getSeries(this)">生鲜手握</a>
-                        </li>
-                        <li>
-                            <a href="#" onclick="getSeries(this)">熟食手握</a>
-                        </li>
-                        <li>
-                            <a href="#" onclick="getSeries(this)">细卷</a>
-                        </li>
-                        <li>
-                            <a href="#" onclick="getSeries(this)">寿司卷</a>
-                        </li>
-                        <li>
-                            <a href="#" onclick="getSeries(this)">寿司军舰</a>
-                        </li>
-                        
-                    </ul>
-                    <ul class="thumbnails" id="dishes">
-                        
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>
-                                    编号
-                                </th>
-                                <th>
-                                    产品
-                                </th>
-                                <th>
-                                    交付时间
-                                </th>
-                                <th>
-                                    状态
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    1
-                                </td>
-                                <td>
-                                    TB - Monthly
-                                </td>
-                                <td>
-                                    01/04/2012
-                                </td>
-                                <td>
-                                    Default
-                                </td>
-                            </tr>
-                            <tr class="success">
-                                <td>
-                                    1
-                                </td>
-                                <td>
-                                    TB - Monthly
-                                </td>
-                                <td>
-                                    01/04/2012
-                                </td>
-                                <td>
-                                    Approved
-                                </td>
-                            </tr>
-                            <tr class="error">
-                                <td>
-                                    2
-                                </td>
-                                <td>
-                                    TB - Monthly
-                                </td>
-                                <td>
-                                    02/04/2012
-                                </td>
-                                <td>
-                                    Declined
-                                </td>
-                            </tr>
-                            <tr class="warning">
-                                <td>
-                                    3
-                                </td>
-                                <td>
-                                    TB - Monthly
-                                </td>
-                                <td>
-                                    03/04/2012
-                                </td>
-                                <td>
-                                    Pending
-                                </td>
-                            </tr>
-                            <tr class="info">
-                                <td>
-                                    4
-                                </td>
-                                <td>
-                                    TB - Monthly
-                                </td>
-                                <td>
-                                    04/04/2012
-                                </td>
-                                <td>
-                                    Call in to confirm
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+<head>
+    <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.7.min.js";;;></script>
+    <script type="text/javascript" language="javascript" src="js.js"></script>
+    <link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<header style="position: relative;z-index: 900"></header>
+<section>
+    <img src="images/img_01.jpg"/>
+    <h1>菜单</h1>
+    <img src="images/img_01.jpg"/>
+    <ul id="all_series">
+      <li style="color: #333" onclick="getSeries(this)" data-series="热食系列" id="hotfood-series">热<br>食<br>系<br>列</li>
+      <li onclick="getSeries(this)" data-series="冷食系列">冷<br>食<br>系<br>列</a></li>
+      <li onclick="getSeries(this)" data-series="刺身系列">刺<br>身<br>系<br>列</li>
+      <li onclick="getSeries(this)" data-series="套餐系列">套<br>餐<br>系<br>列</li>
+      <li onclick="getSeries(this)" data-series="生鲜手握">生<br>鲜<br>手<br>握</li>
+      <li onclick="getSeries(this)" data-series="熟食手握">熟<br>食<br>手<br>握</li>
+      <li onclick="getSeries(this)" data-series="寿司军舰">寿<br>司<br>军<br>舰</li>
+      <li onclick="getSeries(this)" data-series="寿司卷">寿<br>司<br>卷</li>
+      <li onclick="getSeries(this)" data-series="细卷">细<br>卷</li>
+  </ul>
+    <div id="itemsAndCart">
+        <div id="items">
+            <ul id="dishes"><li><div class="item"><img src="menu/1.jpg" style="width: 120px; height: 120px;"></div><span class="name">味增汤</span><br><span class="price">$2.0</span><button class="add" onclick="addToCart(this)" data-dishname="味增汤">Add</button></li><li><div class="item"><img src="menu/2.jpg" style="width: 120px; height: 120px;"></div><span class="name">章鱼小丸子</span><br><span class="price">$7.5</span><button class="add" onclick="addToCart(this)" data-dishname="章鱼小丸子">Add</button></li><li><div class="item"><img src="menu/3.jpg" style="width: 120px; height: 120px;"></div><span class="name">日式煎饺</span><br><span class="price">$7.5</span><button class="add" onclick="addToCart(this)" data-dishname="日式煎饺">Add</button></li><li><div class="item"><img src="menu/4.jpg" style="width: 120px; height: 120px;"></div><span class="name">豚骨拉面</span><br><span class="price">$15.0</span><button class="add" onclick="addToCart(this)" data-dishname="豚骨拉面">Add</button></li><li><div class="item"><img src="menu/5.jpg" style="width: 120px; height: 120px;"></div><span class="name">鳗鱼饭</span><br><span class="price">$28.0</span><button class="add" onclick="addToCart(this)" data-dishname="鳗鱼饭">Add</button></li></ul>
+            <div id="pageButton">
+                <button class="page selectedPage"></button>
+                <button class="page"></button>
             </div>
         </div>
+        <div id="cart" >
+            <ul id="current_order">
+                <li id="cartTittle"><span>ORDER DETAILS</span><span class="clearCart" onclick="clearCart()">[CLEAR]</span></li>
+            </ul>
+            <hr>
+            <button class="checkout">结算</button>
+            <span id = "total_price" class="totalPrice">Total price: $0</span>
+        </div>
     </div>
-</div>
-
-<script> 
-    function getSeries(item){
-        var series = item.innerHTML;
-        var request=$.ajax({
-            url:'getDish.php?series='+series,
-            async:false
-        })
-        var jsonStr = request.responseText;
-
-        var test = eval("("+jsonStr+")");
-        var test2 = eval("("+test+")");
-        var dishesString = "";
-
-        for(var i in test2){
-            dishesString +="<li class='col-md-4'>                    <div class='thumbnail'>                        <img alt='300x200' src='menu/" + test2[i].Picture + "/>                        <div class='caption'>                            <h3>"+ test2[i].DishName+"</h3>                            <p>                                "+test2[i].Price+"                            </p>                            <p>                                <a class='btn btn-primary' href='#''>浏览</a> <a class='btn' href='#'>分享</a>                            </p>                        </div>                    </div>         </li>    "
-        }
-        var dishesDiv = document.getElementById("dishes");
-        
-        dishesDiv.innerHTML = dishesString;
-    }
-</script>  
+</section>
+<footer></footer>
+</body>
+</html>

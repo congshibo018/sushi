@@ -1,7 +1,7 @@
 function getSeries(item){
         var series = item.getAttribute("data-series");
         var request=$.ajax({
-            url:'getDish.php?series='+series,
+            url:'getDish.php?series='+series+'&page=1',
             async:false
         })
         var jsonStr = request.responseText;
@@ -15,7 +15,6 @@ function getSeries(item){
 
           var divElement = document.createElement("div");
           divElement.setAttribute("class","item");
-
           var imgElement = document.createElement("img");
           imgElement.src = "menu/"+test2[i].Picture;
           imgElement.style = "width: 120px; height: 120px";
@@ -24,6 +23,7 @@ function getSeries(item){
 
           var spanElement = document.createElement("span");
           spanElement.setAttribute("class","name");
+          spanElement.setAttribute("title",test2[i].DishName);
           spanElement.innerHTML = test2[i].DishName;
 
           var spanElement2 = document.createElement("span");
@@ -52,6 +52,24 @@ function getSeries(item){
           childs[i].style = "color:#999999";
         }
         item.style = "color: #333";
+        var request=$.ajax({
+            url:'getSeriesPageNum.php?series='+series,
+            async:false
+        })
+        var pageNum = request.responseText;
+        var pageButton = document.getElementById("pageButton");
+        pageButton.innerHTML = "";
+        var button1 = document.createElement("button");
+        button1.setAttribute("class","page selectedPage");
+        button1.setAttribute("onclick","changePage('"+series+"',"+1+")");
+        pageButton.appendChild(button1);
+
+        for(var p=2;p<=pageNum;p++){
+          var button2 = document.createElement("button");
+          button2.setAttribute("class","page");
+          button2.setAttribute("onclick","changePage('"+series+"',"+p+")");
+          pageButton.appendChild(button2);
+        }
     }
     function getCart() {
       var request=$.ajax({
@@ -61,7 +79,6 @@ function getSeries(item){
       var jsonStr = request.responseText;
       var test = eval("("+jsonStr+")");
       var cartString = "";
-
       var li = document.createElement("li");
       li.setAttribute("id","cartTittle");
 
@@ -69,6 +86,12 @@ function getSeries(item){
       spanElement.innerHTML = "ORDER DETAILS";
       li.appendChild(spanElement);
 
+      var clearElement = document.createElement("span");
+      clearElement.setAttribute("class","clearCart");
+      clearElement.setAttribute("onclick","clearCart()");
+      clearElement.innerHTML = "[CLEAR]";
+      li.appendChild(clearElement);
+      
       var total_price = "";
 
       var ul = document.getElementById("current_order");
@@ -87,7 +110,7 @@ function getSeries(item){
 
           var number = document.createElement("span");
           number.setAttribute("class","cartNumber");
-          number.innerHTML = "<button class='cartNumberAdjust' data-dishName= "+i+" onclick='removeFromCart(this)'>-</button> "+num+" <button class='cartNumberAdjust' data-dishName= "+i+" onclick='addToCart(this)'>+</button>";
+          number.innerHTML = "<button class='cartNumberAdjust' data-dishName= '"+i+"' onclick='removeFromCart(this)'>-</button> "+num+" <button class='cartNumberAdjust' data-dishName= '"+i+"' onclick='addToCart(this)'>+</button>";
 
           var price = document.createElement("span");
           price.setAttribute("class","cartPrice");
@@ -115,7 +138,7 @@ function getSeries(item){
       });
       var total_price = request.responseText;
       var t_price = document.getElementById("total_price");
-      t_price.innerHTML = "total_price: "+total_price;
+      t_price.innerHTML = "Total price: $"+total_price;
       getCart();
     }
 
@@ -127,7 +150,7 @@ function getSeries(item){
       });
       var total_price = request.responseText;
       var t_price = document.getElementById("total_price");
-      t_price.innerHTML = "total_price: "+total_price;
+      t_price.innerHTML = "Total price: $"+total_price;
       getCart();
     }
 
@@ -138,7 +161,7 @@ function getSeries(item){
       });
       var total_price = request.responseText;
       var t_price = document.getElementById("total_price");
-      t_price.innerHTML = "total_price: "+total_price;
+      t_price.innerHTML = "Total price: $"+total_price;
       getCart();
     }
     
@@ -159,10 +182,70 @@ function getSeries(item){
         var num = test[i] + "";
         num = num.replace(/[^0-9]/ig,"");
         if (num != 0){
-          message += i+":"+ num + "份<br>";
+          message += i+":"+ num + "<br>";
         }
       }
       message += "TOTAL PRICE:"+total_price;
       alert(message);
 
+    }
+
+    function changePage(series,page){
+      var request=$.ajax({
+            url:'getDish.php?series='+series+'&page='+page,
+            async:false
+        })
+      var jsonStr = request.responseText;
+      var test = eval("("+jsonStr+")");
+      var test2 = eval("("+test+")");
+
+      var dishes = document.getElementById("dishes");
+      dishes.innerHTML = "";
+      for(var i in test2){
+        var newDishLi = document.createElement("li");
+
+        var divElement = document.createElement("div");
+        divElement.setAttribute("class","item");
+
+        var imgElement = document.createElement("img");
+        imgElement.src = "menu/"+test2[i].Picture;
+        imgElement.style = "width: 120px; height: 120px";
+
+        divElement.appendChild(imgElement);
+
+        var spanElement = document.createElement("span");
+        spanElement.setAttribute("class","name");
+        spanElement.innerHTML = test2[i].DishName;
+
+        var spanElement2 = document.createElement("span");
+        spanElement2.setAttribute("class","price");
+        spanElement2.innerHTML = "$"+test2[i].Price;
+
+        var buttonElement = document.createElement("button");
+        buttonElement.setAttribute("class","add");
+        buttonElement.innerHTML = "Add";
+        buttonElement.setAttribute("onclick","addToCart(this)");
+        buttonElement.setAttribute("data-dishName",test2[i].DishName);
+
+        var br = document.createElement("br");
+
+        newDishLi.appendChild(divElement);
+        newDishLi.appendChild(spanElement);
+        newDishLi.appendChild(br);
+        newDishLi.appendChild(spanElement2);
+        newDishLi.appendChild(buttonElement);
+
+        dishes.appendChild(newDishLi);
+      }
+    }
+
+    function getTotalPrice(){
+      var request=$.ajax({
+            url:'getTotalPrice.php',
+            async:false
+        })
+      var total_price = request.responseText;
+      var t_price = document.getElementById("total_price");
+      t_price.innerHTML = "Total price: $"+total_price;
+      document.getElementById("paypalAmount").value = total_price;
     }

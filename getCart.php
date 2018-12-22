@@ -13,10 +13,10 @@
         $query = "select * from Dish";
         $result = mysqli_query($con,$query);
         while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
-            $my_array[$row['DishName']] = 0;
+            $my_array[$row['DishName']] = 0; //数量
         }
-        $_SESSION['cart'] = $my_array;
         $_SESSION['total_price'] = 0;
+        $_SESSION['cart'] = $my_array;
     }
     echo urldecode(json_encode($_SESSION['cart']));
 ?>
